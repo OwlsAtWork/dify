@@ -491,7 +491,7 @@ class RecursiveCharacterTextSplitter(TextSplitter):
     ) -> None:
         """Create a new TextSplitter."""
         super().__init__(keep_separator=keep_separator, **kwargs)
-        self._separators = separators or ["\n\n", "\n", " ", ""]
+        self._separators = separators or ["SLIDE_ID"]
 
     def _split_text(self, text: str, separators: list[str]) -> list[str]:
         """Split incoming text and return chunks."""

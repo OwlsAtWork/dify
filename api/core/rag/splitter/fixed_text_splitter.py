@@ -56,7 +56,7 @@ class FixedRecursiveCharacterTextSplitter(EnhanceRecursiveCharacterTextSplitter)
         """Create a new TextSplitter."""
         super().__init__(**kwargs)
         self._fixed_separator = fixed_separator
-        self._separators = separators or ["\n\n", "\n", " ", ""]
+        self._separators = separators or ["SLIDE_ID"]
 
     def split_text(self, text: str) -> list[str]:
         """Split incoming text and return chunks."""

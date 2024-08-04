@@ -60,7 +60,7 @@ class BaseIndexProcessor(ABC):
                 chunk_size=segmentation["max_tokens"],
                 chunk_overlap=segmentation.get('chunk_overlap', 0),
                 fixed_separator=separator,
-                separators=[""],
+                separators=["SLIDE_ID"],
                 embedding_model_instance=embedding_model_instance
             )
         else:

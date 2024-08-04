@@ -444,7 +444,7 @@ class IndexingRunner:
                 chunk_size=segmentation["max_tokens"],
                 chunk_overlap=chunk_overlap,
                 fixed_separator=separator,
-                separators=[""],
+                separators=["SLIDE_ID"],
                 embedding_model_instance=embedding_model_instance
             )
         else:

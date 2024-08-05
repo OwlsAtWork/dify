@@ -99,7 +99,6 @@ class TextSplitter(BaseDocumentTransformer, ABC):
         for doc in documents:
             texts.append(doc.page_content)
             metadatas.append(doc.metadata)
-        print(f"text before create documents is: {texts}")
         return self.create_documents(texts, metadatas=metadatas)
 
     def _join_docs(self, docs: list[str], separator: str) -> Optional[str]:
@@ -491,17 +490,12 @@ class RecursiveCharacterTextSplitter(TextSplitter):
             **kwargs: Any,
     ) -> None:
         """Create a new TextSplitter."""
-        print(f"kwargs to RecursiveCharacterTextSplitter are : {kwargs}")
-        print(f"separators to RecursiveCharacterTextSplitter are: {separators} and keep_separator is: {keep_separator}")
         super().__init__(keep_separator=keep_separator, **kwargs)
-        self._separators = separators or ["SLIDE_ID"]
+        self._separators = separators or ["\n\n", "\n", " ", ""]
 
 
     def _split_text(self, text: str, separators: list[str]) -> list[str]:
         """Split incoming text and return chunks."""
-        print("inside split text of Recursive char text splitter")
-        print(f"separators are {separators}")
-        print(f"text is {text}")
         final_chunks = []
         # Get appropriate separator to use
         separator = separators[-1]
@@ -514,14 +508,9 @@ class RecursiveCharacterTextSplitter(TextSplitter):
                 separator = _s
                 new_separators = separators[i + 1:]
                 break
-        
-        print(f"new separator is: {new_separators}")
-        print(f"separator is: {separator}")
 
 
         splits = _split_text_with_regex(text, separator, self._keep_separator)
-
-        print(f"splits after regex is: {splits}")
         # Now go merging things, recursively splitting longer texts.
         _good_splits = []
         _separator = "" if self._keep_separator else separator
@@ -542,7 +531,6 @@ class RecursiveCharacterTextSplitter(TextSplitter):
             merged_text = self._merge_splits(_good_splits, _separator)
             final_chunks.extend(merged_text)
         
-        print(f"final chunks are: {final_chunks}")
         return final_chunks
 
     def split_text(self, text: str) -> list[str]:

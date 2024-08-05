@@ -44,7 +44,6 @@ class BaseIndexProcessor(ABC):
         """
         Get the NodeParser object according to the processing rule.
         """
-        print(f"inside index processor _get_splitter, processing rule mode is: {processing_rule['mode']}")
         if processing_rule['mode'] == "custom":
             # The user-defined segmentation rule
             rules = processing_rule['rules']
@@ -61,7 +60,7 @@ class BaseIndexProcessor(ABC):
                 chunk_size=segmentation["max_tokens"],
                 chunk_overlap=segmentation.get('chunk_overlap', 0),
                 fixed_separator=separator,
-                separators=["SLIDE_ID"],
+                separators=["\n\n", "。", ". ", " ", ""],
                 embedding_model_instance=embedding_model_instance
             )
         else:

@@ -54,19 +54,12 @@ class EnhanceRecursiveCharacterTextSplitter(RecursiveCharacterTextSplitter):
 class FixedRecursiveCharacterTextSplitter(EnhanceRecursiveCharacterTextSplitter):
     def __init__(self, fixed_separator: str = "\n\n", separators: Optional[list[str]] = None, **kwargs: Any):
         """Create a new TextSplitter."""
-        print(f"kwargs to FixedRecursiveCharacterTextSplitter's instance are: {kwargs}")
-        print(f"fixed separator is: {fixed_separator} and separators are: {separators}")
         super().__init__(**kwargs)
         self._fixed_separator = fixed_separator
         self._separators = separators or ["SLIDE_ID"]
 
     def split_text(self, text: str) -> list[str]:
         """Split incoming text and return chunks."""
-
-        print("inside split_text of FixedRecursiveCharacterTextSplitter")
-        print(f"separators are: {self._separators}")
-        print(f"fixed separator is: {self._fixed_separator}")
-        print(f"chunk size is {self._chunk_size}")
         if self._fixed_separator:
             chunks = text.split(self._fixed_separator)
         else:
@@ -84,8 +77,6 @@ class FixedRecursiveCharacterTextSplitter(EnhanceRecursiveCharacterTextSplitter)
 
     def recursive_split_text(self, text: str) -> list[str]:
         """Split incoming text and return chunks."""
-
-        print("inside recursive split text of FixedRecursiveCharacterTextSplitter")
         final_chunks = []
         # Get appropriate separator to use
         separator = self._separators[-1]
@@ -117,5 +108,4 @@ class FixedRecursiveCharacterTextSplitter(EnhanceRecursiveCharacterTextSplitter)
         if _good_splits:
             merged_text = self._merge_splits(_good_splits, separator)
             final_chunks.extend(merged_text)
-        print(f"final chunks fixed are: {final_chunks}")
         return final_chunks

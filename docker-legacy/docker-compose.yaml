@@ -205,6 +205,7 @@ services:
       SSRF_PROXY_HTTP_URL: 'http://ssrf_proxy:3128'
       SSRF_PROXY_HTTPS_URL: 'http://ssrf_proxy:3128'
       # Indexing configuration
+      DISABLE_MARKDOWN_REFINING: 'false'
       INDEXING_MAX_SEGMENTATION_TOKENS_LENGTH: 1000
     depends_on:
       - db
@@ -375,6 +376,7 @@ services:
       NOTION_CLIENT_ID: you-client-id
       NOTION_INTERNAL_SECRET: you-internal-secret
       # Indexing configuration
+      DISABLE_MARKDOWN_REFINING: 'false'
       INDEXING_MAX_SEGMENTATION_TOKENS_LENGTH: 1000
     depends_on:
       - db

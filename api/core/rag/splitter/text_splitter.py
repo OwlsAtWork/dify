@@ -493,7 +493,6 @@ class RecursiveCharacterTextSplitter(TextSplitter):
         super().__init__(keep_separator=keep_separator, **kwargs)
         self._separators = separators or ["\n\n", "\n", " ", ""]
 
-
     def _split_text(self, text: str, separators: list[str]) -> list[str]:
         """Split incoming text and return chunks."""
         final_chunks = []
@@ -508,7 +507,6 @@ class RecursiveCharacterTextSplitter(TextSplitter):
                 separator = _s
                 new_separators = separators[i + 1:]
                 break
-
 
         splits = _split_text_with_regex(text, separator, self._keep_separator)
         # Now go merging things, recursively splitting longer texts.
@@ -530,7 +528,6 @@ class RecursiveCharacterTextSplitter(TextSplitter):
         if _good_splits:
             merged_text = self._merge_splits(_good_splits, _separator)
             final_chunks.extend(merged_text)
-        
         return final_chunks
 
     def split_text(self, text: str) -> list[str]:

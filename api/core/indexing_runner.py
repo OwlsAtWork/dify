@@ -267,6 +267,7 @@ class IndexingRunner:
         for extract_setting in extract_settings:
             # extract
             text_docs = index_processor.extract(extract_setting, process_rule_mode=tmp_processing_rule["mode"])
+            print(f"text doc retrieved is: {text_docs}")
             all_text_docs.extend(text_docs)
             processing_rule = DatasetProcessRule(
                 mode=tmp_processing_rule["mode"],

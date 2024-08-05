@@ -418,11 +418,6 @@ class IndexingConfig(BaseSettings):
         default=1000,
     )
 
-    DISABLE_MARKDOWN_REFINING: bool = Field(
-        description='whether to disable markdown content refining or not',
-        default=False,
-    )
-
 
 class ImageFormatConfig(BaseSettings):
     MULTIMODAL_SEND_IMAGE_FORMAT: str = Field(

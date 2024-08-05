@@ -67,7 +67,6 @@ class FixedRecursiveCharacterTextSplitter(EnhanceRecursiveCharacterTextSplitter)
 
         final_chunks = []
         for chunk in chunks:
-            print(f"length of current chunk is: {self._length_function(chunk)}")
             if self._length_function(chunk) > self._chunk_size:
                 final_chunks.extend(self.recursive_split_text(chunk))
             else:
@@ -88,7 +87,6 @@ class FixedRecursiveCharacterTextSplitter(EnhanceRecursiveCharacterTextSplitter)
                 separator = _s
                 break
         # Now that we have the separator, split the text
-        print(f"separator is: {separator}")
         if separator:
             splits = text.split(separator)
         else:

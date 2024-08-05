@@ -5,7 +5,6 @@ from typing import Optional, cast
 from core.rag.extractor.extractor_base import BaseExtractor
 from core.rag.extractor.helpers import detect_file_encodings
 from core.rag.models.document import Document
-from flask import current_app
 
 
 class MarkdownExtractor(BaseExtractor):
@@ -51,12 +50,6 @@ class MarkdownExtractor(BaseExtractor):
 
         """
         markdown_tups: list[tuple[Optional[str], str]] = []
-        disable_markdown_refining = current_app.config['DISABLE_MARKDOWN_REFINING']
-        if disable_markdown_refining:
-            # Append a tuple with None and the markdown text
-            markdown_tups.append((None, markdown_text))
-            return markdown_tups
-        
         lines = markdown_text.split("\n")
 
         current_header = None

@@ -5,6 +5,7 @@ from typing import Optional, cast
 from core.rag.extractor.extractor_base import BaseExtractor
 from core.rag.extractor.helpers import detect_file_encodings
 from core.rag.models.document import Document
+from flask import current_app
 
 
 class MarkdownExtractor(BaseExtractor):
@@ -49,7 +50,13 @@ class MarkdownExtractor(BaseExtractor):
         The keys are the headers and the values are the text under each header.
 
         """
+        disable_markdown_refining = current_app.config['DISABLE_MARKDOWN_REFINING']
         markdown_tups: list[tuple[Optional[str], str]] = []
+        if disable_markdown_refining:
+            # Append a tuple with Header as None and the markdown text as value
+            markdown_tups.append((None, markdown_text))
+            return markdown_tups
+        
         lines = markdown_text.split("\n")
 
         current_header = None

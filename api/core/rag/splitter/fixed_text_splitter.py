@@ -66,6 +66,7 @@ class FixedRecursiveCharacterTextSplitter(EnhanceRecursiveCharacterTextSplitter)
         print(f"chunk size is {self._chunk_size}")
         if self._fixed_separator:
             chunks = text.split(self._fixed_separator)
+            return chunks
         else:
             chunks = list(text)
 

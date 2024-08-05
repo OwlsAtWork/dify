@@ -44,6 +44,7 @@ class BaseIndexProcessor(ABC):
         """
         Get the NodeParser object according to the processing rule.
         """
+        print(f"inside index processor _get_splitter, processing rule mode is: {processing_rule['mode']}")
         if processing_rule['mode'] == "custom":
             # The user-defined segmentation rule
             rules = processing_rule['rules']

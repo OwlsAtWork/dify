@@ -262,6 +262,8 @@ class IndexingRunner:
         index_type = doc_form
         index_processor = IndexProcessorFactory(index_type).init_index_processor()
         all_text_docs = []
+        print(f"inside indexing estimate")
+        print(f"extract settings are: {extract_settings}")
         for extract_setting in extract_settings:
             # extract
             text_docs = index_processor.extract(extract_setting, process_rule_mode=tmp_processing_rule["mode"])

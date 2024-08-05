@@ -99,6 +99,7 @@ class TextSplitter(BaseDocumentTransformer, ABC):
         for doc in documents:
             texts.append(doc.page_content)
             metadatas.append(doc.metadata)
+        print(f"text before create documents is: {texts}")
         return self.create_documents(texts, metadatas=metadatas)
 
     def _join_docs(self, docs: list[str], separator: str) -> Optional[str]:
@@ -490,12 +491,17 @@ class RecursiveCharacterTextSplitter(TextSplitter):
             **kwargs: Any,
     ) -> None:
         """Create a new TextSplitter."""
+        print(f"kwargs to RecursiveCharacterTextSplitter are : {kwargs}")
+        print(f"separators to RecursiveCharacterTextSplitter are: {separators} and keep_separator is: {keep_separator}")
         super().__init__(keep_separator=keep_separator, **kwargs)
         self._separators = separators or ["SLIDE_ID"]
+
 
     def _split_text(self, text: str, separators: list[str]) -> list[str]:
         """Split incoming text and return chunks."""
         print("inside split text of Recursive char text splitter")
+        print(f"separators are {separators}")
+        print(f"text is {text}")
         final_chunks = []
         # Get appropriate separator to use
         separator = separators[-1]

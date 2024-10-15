@@ -12,6 +12,8 @@
 
 set -e
 
+export HOST=${HOST:-"0.0.0.0"}
+
 export NEXT_PUBLIC_DEPLOY_ENV=${DEPLOY_ENV}
 export NEXT_PUBLIC_EDITION=${EDITION}
 export NEXT_PUBLIC_API_PREFIX=${CONSOLE_API_URL}/console/api

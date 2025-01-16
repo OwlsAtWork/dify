@@ -1,8 +1,8 @@
 'use client'
 import type { FC } from 'react'
 import React, { useState } from 'react'
-import cn from 'classnames'
 import s from './style.module.css'
+import cn from '@/utils/classnames'
 import ImagePreview from '@/app/components/base/image-uploader/image-preview'
 
 type Props = {
@@ -53,8 +53,7 @@ const ImageGallery: FC<Props> = ({
         imagePreviewUrl && (
           <ImagePreview
             url={imagePreviewUrl}
-            onCancel={() => setImagePreviewUrl('')}
-          />
+            onCancel={() => setImagePreviewUrl('')} title={''} />
         )
       }
     </div>

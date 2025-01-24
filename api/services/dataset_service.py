@@ -910,6 +910,7 @@ class DocumentService:
                             account,
                             file_name,
                             batch,
+                            knowledge_config.doc_metadata,
                         )
                         db.session.add(document)
                         db.session.flush()
@@ -1042,6 +1043,7 @@ class DocumentService:
         account: Account,
         name: str,
         batch: str,
+        document_metadata: Optional[dict] = None
     ):
         document = Document(
             tenant_id=dataset.tenant_id,
@@ -1056,6 +1058,7 @@ class DocumentService:
             created_by=account.id,
             doc_form=document_form,
             doc_language=document_language,
+            doc_metadata=document_metadata,
         )
         return document
 

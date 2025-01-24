@@ -102,6 +102,7 @@ class KnowledgeConfig(BaseModel):
     retrieval_model: Optional[RetrievalModel] = None
     doc_form: str = "text_model"
     doc_language: str = "English"
+    doc_metadata: Optional[dict] = None
     embedding_model: Optional[str] = None
     embedding_model_provider: Optional[str] = None
     name: Optional[str] = None

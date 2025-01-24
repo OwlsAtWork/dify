@@ -46,6 +46,7 @@ class DocumentAddByTextApi(DatasetApiResource):
         parser.add_argument(
             "doc_language", type=str, default="English", required=False, nullable=False, location="json"
         )
+        parser.add_argument("doc_metadata", type=dict, required=False, nullable=True, location="json")
         parser.add_argument(
             "indexing_technique", type=str, choices=Dataset.INDEXING_TECHNIQUE_LIST, nullable=False, location="json"
         )

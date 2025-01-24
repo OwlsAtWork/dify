@@ -231,6 +231,7 @@ class KnowledgeRetrievalNode(BaseNode[KnowledgeRetrievalNodeData]):
                                 "dataset_id": dataset.id,
                                 "dataset_name": dataset.name,
                                 "document_id": document.id,
+                                "document_metadata": document.doc_metadata,
                                 "document_name": document.name,
                                 "document_data_source_type": document.data_source_type,
                                 "segment_id": segment.id,
